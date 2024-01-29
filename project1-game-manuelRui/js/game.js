@@ -8,7 +8,7 @@ class Game {
         this.gameEndScreen = document.getElementById("game-end");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
-        this.player = new Player(this.gameScreen, 250, 150, 150, 100, "./images/titanic.png");
+        this.player = new Player(this.gameScreen, 250, 150, 150, 70, "./images/titanic.png");
 
 
         // Style for the game board.
@@ -96,14 +96,14 @@ class Game {
         }
 
         // If there are no obstacles, push a new one in after 1 second and a half
-        if(!this.obstacles.length && !this.isPushingObstacle) {
+        if(!this.obstacles.length + 8 && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
             setTimeout (() => {
                 
                 this.obstacles.push(new Obstacle(this.gameScreen));
                 this.isPushingObstacle = false;
 
-            }, 1500);
+            }, 700);
 
         
         }

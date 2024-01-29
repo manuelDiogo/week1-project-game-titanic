@@ -3,11 +3,11 @@ class Obstacle {
         this.gameScreen = gameScreen;
 
         // Random Position
-        this.top = Math.floor(Math.random() * 300 + 150);
+        this.top = Math.floor(Math.random() * 550 + 0);
 
         this.right = 0;
-        this.width = 100;
-        this.height = 150;
+        this.width = 50;
+        this.height = 50;
 
 
         // create the HTML element and create deafult styling
