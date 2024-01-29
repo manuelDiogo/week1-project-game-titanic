@@ -3,7 +3,7 @@ class Obstacle {
         this.gameScreen = gameScreen;
 
         // Random Position
-        this.top = Math.floor(Math.random() * 300 + 70);
+        this.top = Math.floor(Math.random() * 300 + 150);
 
         this.right = 0;
         this.width = 100;
