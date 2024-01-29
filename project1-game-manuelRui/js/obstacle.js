@@ -26,7 +26,7 @@ class Obstacle {
         // Move obstacles from right to left
 
 
-       
+
 
 
         this.right += 10;
@@ -35,15 +35,16 @@ class Obstacle {
         this.updatePosition()
     }
 
-    stop() {
-
-        this.right = 0;
+    collision() {
+        this.right -= 5;
 
     }
-
+    
     updatePosition() {
         this.element.style.right = `${this.right}px`;
         this.element.style.top = `${this.top}px`;
     }
+
+
 };
 

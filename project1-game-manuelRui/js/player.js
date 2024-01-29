@@ -25,6 +25,7 @@ class Player {
         this.directionY = 0;
 
         this.gameScreen.appendChild(this.element);
+        this.element.setAttribute("id","player");
     }
 
     move() {
@@ -72,6 +73,7 @@ class Player {
             playerRect.top < obstacleRect.bottom &&
             playerRect.bottom > obstacleRect.top
         ) {
+            this.directionX -= 5;
             return true;
         } else {
             return false;

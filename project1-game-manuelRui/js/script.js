@@ -8,7 +8,7 @@ window.onload = function () {
     startGame();
   });
 
-  restartButton.addEventListener("click", function() {
+  restartButton.addEventListener("click", function () {
     // JS, in the current tab, is going to refresh (reload) the page.
     location.reload();
   })
@@ -19,6 +19,10 @@ window.onload = function () {
     game.start();
   };
 
+  let angle = 0;
+
+
+
   function handleKeydown(event) {
     const key = event.key;
     const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"]
@@ -26,23 +30,44 @@ window.onload = function () {
     if (possibleKeys.includes(key)) {
       event.preventDefault();
 
+      let angle = 0;
+
       if (game) {
         switch (key) {
-          /*case "ArrowLeft":
-            game.player.directionX = -10;
-            break;*/
-          case "ArrowUp":
-            game.player.directionY = -5;
+          case "ArrowLeft":
+            game.player.directionX = -5;
             break;
-          /*case "ArrowRight":
-            game.player.directionX = 10;
-            break;*/
+          case "ArrowUp":
+
+
+
+            game.player.directionY = -5;
+
+
+
+            break;
+          case "ArrowRight":
+            game.player.directionX = 5;
+            break;
           case "ArrowDown":
-            game.player.directionY = 5;       
+
+
+
+            game.player.directionY = 5;
+
+
+
         }
+
       }
     }
   }
+
+
+
+
+
+  //game.player.rotate(angle);
 
   function handleKeyup(event) {
     const key = event.key;
@@ -54,16 +79,16 @@ window.onload = function () {
       if (game) {
         switch (key) {
           case "ArrowLeft":
-            game.player.directionX = 0;
+            game.player.directionX = -1;
             break;
           case "ArrowUp":
-            game.player.directionY = 0;
+            game.player.directionY = -1;
             break;
           case "ArrowRight":
-            game.player.directionX = 0;
+            game.player.directionX = 1;
             break;
           case "ArrowDown":
-            game.player.directionY = 0;        
+            game.player.directionY = 1;
         }
       }
     }
