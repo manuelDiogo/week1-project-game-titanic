@@ -3,9 +3,9 @@ class Obstacle {
         this.gameScreen = gameScreen;
 
         // Random Position
-        this.left = Math.floor(Math.random() * 300 + 70);
+        this.right = Math.floor(Math.random() * 300 + 70);
 
-        this.top = 0;
+        this.right = 0;
         this.width = 100;
         this.height = 150;
 
@@ -24,13 +24,13 @@ class Obstacle {
 
     move() {
         // Move obstacle down
-        this.left += 3;
+        this.right += 3;
 
         this.updatePosition();
     }
 
     updatePosition() {
-        this.element.style.left = `${this.left}px`;
+        this.element.style.right = `${this.right}px`;
         this.element.style.top = `${this.top}px`;
     }
 };
