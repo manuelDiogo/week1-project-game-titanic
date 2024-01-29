@@ -67,3 +67,9 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+#time-remaining {
+  justify-content: center;
+  color: orange;
+  margin-right: 50px;
+}
