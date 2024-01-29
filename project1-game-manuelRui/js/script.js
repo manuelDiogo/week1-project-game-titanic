@@ -32,13 +32,13 @@ window.onload = function () {
             game.player.directionX = -10;
             break;*/
           case "ArrowUp":
-            game.player.directionY = -10;
+            game.player.directionY = -5;
             break;
           /*case "ArrowRight":
             game.player.directionX = 10;
             break;*/
           case "ArrowDown":
-            game.player.directionY = 10;       
+            game.player.directionY = 5;       
         }
       }
     }
