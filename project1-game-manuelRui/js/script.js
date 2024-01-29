@@ -19,7 +19,7 @@ window.onload = function () {
     game.start();
   };
 
-  let angle = 0;
+  
 
 
 
