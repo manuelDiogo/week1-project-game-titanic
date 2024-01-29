@@ -80,7 +80,7 @@ class Game {
                 this.lives--;
             }
 
-            else if(obstacle.top > this.height) {
+            else if(obstacle.right > this.width) {
                 this.score++;
 
                 // Remove the Obstacle HTML Element from the HTML.

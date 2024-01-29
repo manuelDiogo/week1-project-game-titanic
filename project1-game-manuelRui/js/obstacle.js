@@ -5,6 +5,7 @@ class Obstacle {
         // Random Position
         this.right = Math.floor(Math.random() * 300 + 70);
 
+        this.top = 0;
         this.right = 0;
         this.width = 100;
         this.height = 150;
@@ -16,14 +17,14 @@ class Obstacle {
         this.element.style.position = "absolute";
         this.element.style.width = `${this.width}px`;
         this.element.style.height = `${this.height}px`;
-        this.element.style.left = `${this.left}px`;
+        this.element.style.right = `${this.right}px`;
         this.element.style.top = `${this.top}px`;
 
         this.gameScreen.appendChild(this.element);
     }
 
     move() {
-        // Move obstacle down
+        // Move obstacles from right to left
         this.right += 3;
 
         this.updatePosition();
