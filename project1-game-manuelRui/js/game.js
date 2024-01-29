@@ -73,11 +73,18 @@ class Game {
             obstacle.move();
 
             if (this.player.didCollide(obstacle)) {
-                obstacle.element.remove();
+                //obstacle.element.remove();
+                obstacle.right -= 3
 
                 this.obstacles.splice(i, 1);
 
-                this.lives--;
+                setTimeout(() => {
+
+                    obstacle.right = 0
+
+                },2000)
+
+                
             }
 
             else if(obstacle.right > this.width) {

@@ -24,9 +24,21 @@ class Obstacle {
 
     move() {
         // Move obstacles from right to left
-        this.right += 3;
 
-        this.updatePosition();
+
+       
+
+
+        this.right += 10;
+
+
+        this.updatePosition()
+    }
+
+    stop() {
+
+        this.right = 0;
+
     }
 
     updatePosition() {
