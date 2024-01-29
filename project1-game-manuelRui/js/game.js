@@ -13,7 +13,7 @@ class Game {
 
         // Style for the game board.
         this.height = 600;
-        this.width = 500;
+        this.width = 1200;
 
         // Obstacles
         this.obstacles = [];

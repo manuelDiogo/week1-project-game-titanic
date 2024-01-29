@@ -28,17 +28,17 @@ window.onload = function () {
 
       if (game) {
         switch (key) {
-          case "ArrowLeft":
+          /*case "ArrowLeft":
             game.player.directionX = -10;
-            break;
+            break;*/
           case "ArrowUp":
             game.player.directionY = -10;
             break;
-          case "ArrowRight":
+          /*case "ArrowRight":
             game.player.directionX = 10;
-            break;
+            break;*/
           case "ArrowDown":
-            game.player.directionY = 10;        
+            game.player.directionY = 10;       
         }
       }
     }
