@@ -16,9 +16,11 @@ class Game {
         this.width = 1200;
 
 
-
         // Obstacles
         this.obstacles = [];
+
+        // Boss
+        this.bigIces = [];
 
         // Score
         this.score = 0;
@@ -107,30 +109,53 @@ class Game {
                 // Remove the Obstacle from the Game Class' obstacles array.
                 this.obstacles.splice(i, 1);
             }
+
+
+
+
         }
 
         if (this.lives === 0) {
             this.endGame();
         }
 
+        //const iceBerg1 = new Obstacle(this.gameScreen, 50, 50)
+
+        //const iceBerg2 = new Obstacle(this.gameScreen, 200, 200)
+
         // If there are no obstacles, push a new one in after 1 second and a half
-        if (!this.obstacles.length + 8 && !this.isPushingObstacle) {
+        if (!this.obstacles.length + 9 && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
+
+
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10));
                 this.isPushingObstacle = false;
 
             }, 700);
 
+
         }
+        if (!this.obstacles.length + 9 && !this.isPushingIce) {
+            this.isPushingIce = true;
+
+            setTimeout(() => {
+
+                this.obstacles.push(new Obstacle(this.gameScreen, 200, 200, 2));
+                this.isPushingIce = false;
+
+            }, 3100);
+
+        }
+
 
         score.innerHTML = this.score;
         lives.innerHTML = this.lives;
     }
 
     startTimer() {
-        let time = 10;
+        let time = 20;
 
         let timerElement = document.getElementById("time-remaining");
 
@@ -145,9 +170,9 @@ class Game {
                 this.endGame();
 
             }
-            time --;
+            time--;
         }, 1000);
-         
+
     }
 
     endGame() {
@@ -176,9 +201,9 @@ class Game {
 }
 
 
-         
-    
-    
+
+
+
 
 
 
