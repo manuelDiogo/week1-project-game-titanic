@@ -73,3 +73,7 @@ body button {
   color: orange;
   margin-right: 50px;
 }
+
+#win-game {
+  display: none;
+}
