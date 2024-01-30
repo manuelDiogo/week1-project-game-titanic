@@ -5,9 +5,25 @@ class Obstacle {
         // Random Position
         this.top = Math.floor(Math.random() * 550 + 0);
 
+        let width = 0;
+        let height = 0;
+
+        if (Game.obstacles.length === 4) {
+
+            width = 200;
+            height = 200;
+
+        };
+
+        if (Game.obstacles.length !== 4) {
+
+            width = 50;
+            height = 50;
+        };
+
         this.right = 0;
-        this.width = 50;
-        this.height = 50;
+        this.width = width;
+        this.height = height;
 
 
         // create the HTML element and create deafult styling
@@ -24,20 +40,12 @@ class Obstacle {
 
     move() {
         // Move obstacles from right to left
-
-
-
-
-
         this.right += 10;
-
-
         this.updatePosition()
     }
 
     collision() {
-        this.right -= 5;
-
+        this.right - 5;
     }
     
     updatePosition() {
@@ -47,4 +55,13 @@ class Obstacle {
 
 
 };
+
+class BigIce extends Obstacle {
+
+
+
+}
+
+
+
 

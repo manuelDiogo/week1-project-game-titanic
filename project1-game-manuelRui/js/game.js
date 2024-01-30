@@ -24,7 +24,7 @@ class Game {
         this.score = 0;
 
         // Lives
-        this.lives = 3;
+        this.lives = 10;
 
         // Variable to Check If I'm in the Process of creating an Obstacle
         this.isPushingObstacle = false;
@@ -86,20 +86,16 @@ class Game {
 
             if (this.player.didCollide(obstacle)) {
 
-
-
                 setTimeout(() => {
                     obstacle.collision();
                     obstacle.element.remove();
-                }, 120);
-
-
+                }, 150);
 
                 obstacle.right -= 3
 
                 this.obstacles.splice(i, 1);
 
-                //this.lives--          
+                this.lives--          
             }
 
             else if (obstacle.right > this.width) {
@@ -126,7 +122,6 @@ class Game {
                 this.isPushingObstacle = false;
 
             }, 700);
-
 
         }
 
@@ -165,16 +160,22 @@ class Game {
         let timerElement = document.getElementById("time-remaining");
 
         let count = setInterval(function() {
+            
             let minutes = Math.floor(time / 60);
             let seconds = time % 60;
 
             timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
 
+            time--;
+
             if (time <= 0) {
+                
                 clearInterval(count);
                 this.endGame();
             }
-            time --;
+            
+
+        
         }, 1000);
          
     }
