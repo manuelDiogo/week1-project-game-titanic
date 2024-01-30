@@ -113,7 +113,7 @@ class Game {
             }
         }
 
-        if (this.lives === 0 || this.startTimer === 0) {
+        if (this.lives === 0) {
             this.endGame();
         }
 
@@ -134,9 +134,29 @@ class Game {
         lives.innerHTML = this.lives;
     }
 
+    startTimer() {
+        let time = 10;
+
+        let timerElement = document.getElementById("time-remaining");
+
+        let count = setInterval(() => {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
+
+            if (time < 0) {
+                clearInterval(count);
+                this.endGame();
+            }
+            time --;
+        }, 1000);
+         
+    }
+
     endGame() {
         // Change the gameIsOver status. if it's true, remeber that this is going to break the animaton loop.
-        this.gameIsOverOver = true;
+        this.gameIsOver = true;
 
         // Remove Player
         this.player.element.remove();
@@ -156,30 +176,7 @@ class Game {
 
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
-
     }
-
-    startTimer() {
-        let time = 10;
-
-        let timerElement = document.getElementById("time-remaining");
-
-        let count = setInterval(function() {
-            let minutes = Math.floor(time / 60);
-            let seconds = time % 60;
-
-            timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
-
-            if (time <= 0) {
-                clearInterval(count);
-                this.endGame();
-            }
-            time --;
-        }, 1000);
-         
-    }
-    
-
 };
 
 
