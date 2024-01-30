@@ -135,7 +135,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -5, (Math.floor(Math.random() * 550 + 0))));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -5, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
                 this.isPushingObstacle = false;
 
             }, 700);
@@ -146,10 +146,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 100, 8, -300, (Math.floor(Math.random() * 550 + 0))));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 100, 8, -300, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
                 this.isPushingIce = false;
 
-            }, 1000);
+            }, 900);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingBigIce) {
@@ -157,10 +157,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 200, 200, 2, -60, (Math.floor(Math.random() * 550 + 0))));
+                this.obstacles.push(new Obstacle(this.gameScreen, 200, 200, 2, -60, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
                 this.isPushingBigIce = false;
 
-            }, 2800);
+            }, 2500);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingLongIce) {
@@ -168,10 +168,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 0));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 0, "./images/icebergdown.png"));
                 this.isPushingLongIce = false;
 
-            }, 800);
+            }, 500);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingDownIce) {
@@ -179,10 +179,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 550));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 550, "./images/iceberg.png"));
                 this.isPushingDownIce = false;
 
-            }, 800);
+            }, 500);
         }
 
 
@@ -213,8 +213,6 @@ class Game {
         }, 1000);
 
     }
-
-    
 
     endGame() {
         // Change the gameIsOver status. if it's true, remeber that this is going to break the animaton loop.

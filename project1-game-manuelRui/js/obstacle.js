@@ -1,5 +1,5 @@
 class Obstacle {
-    constructor(gameScreen, width, height, velocity, kickback, position) {
+    constructor(gameScreen, width, height, velocity, kickback, position, image) {
         this.gameScreen = gameScreen;
 
         // Random Position
@@ -7,13 +7,13 @@ class Obstacle {
 
         this.top = position
 
-        this.right = 0;
+        this.right = -210;
         this.width = width;
         this.height = height;
 
         // create the HTML element and create deafult styling
         this.element = document.createElement("img");
-        this.element.src = "./images/iceberg.png";
+        this.element.src = image;
         this.element.style.position = "absolute";
         this.element.style.width = `${this.width}px`;
         this.element.style.height = `${this.height}px`;
@@ -46,9 +46,7 @@ class Obstacle {
 
 };
 
-class boundaryIce extends Obstacle {
 
-}
 
 
 
