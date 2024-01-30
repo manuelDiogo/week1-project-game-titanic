@@ -44,11 +44,6 @@ class Obstacle {
 
 };
 
-class BigIce extends Obstacle {
-
-
-
-}
 
 
 

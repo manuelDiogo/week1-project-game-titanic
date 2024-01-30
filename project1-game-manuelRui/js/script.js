@@ -1,7 +1,7 @@
 window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
-
+const restartButtonn = document.getElementById("restart-buttonn");
   let game;
 
   startButton.addEventListener("click", function () {
@@ -9,6 +9,11 @@ window.onload = function () {
   });
 
   restartButton.addEventListener("click", function () {
+    // JS, in the current tab, is going to refresh (reload) the page.
+    location.reload();
+  })
+
+  restartButtonn.addEventListener("click", function () {
     // JS, in the current tab, is going to refresh (reload) the page.
     location.reload();
   })

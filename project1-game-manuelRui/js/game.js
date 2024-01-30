@@ -7,6 +7,7 @@ class Game {
         this.gameScreen = document.getElementById("game-screen");
         this.gameEndScreen = document.getElementById("game-end");
         this.skyScreen = document.getElementById("sky-img");
+        this.gameWinScreen = document.getElementById("win-game");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
         this.player = new Player(this.gameScreen, 125, 75, 75, 35, "./images/titanic.png")
@@ -33,6 +34,8 @@ class Game {
 
         // Variable that checks if the Game is over
         this.gameIsOver = false;
+
+        this.gameIsWon = false;
     }
 
     start() {
@@ -62,6 +65,10 @@ class Game {
     gameLoop() {
 
         if (this.gameIsOver) {
+            return;
+        }
+
+        else if (this.gameIsWon) {
             return;
         }
 
@@ -99,7 +106,7 @@ class Game {
 
                 this.obstacles.splice(i, 1);
 
-                //this.lives--          
+                this.lives--          
             }
 
             else if (obstacle.right > this.width) {
@@ -112,13 +119,15 @@ class Game {
                 this.obstacles.splice(i, 1);
             }
 
-
-
-
         }
 
         if (this.lives === 0) {
             this.endGame();
+        }
+
+        if(this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
+            this.winGame();
+
         }
 
         //const iceBerg1 = new Obstacle(this.gameScreen, 50, 50)
@@ -170,12 +179,17 @@ class Game {
             if (time < 0) {
                 clearInterval(count);
                 this.endGame();
+            }
 
+            if (this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
+                clearInterval(count);
             }
             time--;
         }, 1000);
 
     }
+
+    
 
     endGame() {
         // Change the gameIsOver status. if it's true, remeber that this is going to break the animaton loop.
@@ -197,8 +211,35 @@ class Game {
         // Hide the current Game Screen
         this.gameScreen.style.display = "none";
 
+        this.gameWinScreen.style.display = "none";
+
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
+    }
+
+    winGame() {
+        // Change the gameIsOver status. if it's true, remeber that this is going to break the animaton loop.
+        this.gameIsWon = true;
+
+        // Remove Player
+        this.player.element.remove();
+
+        // Remove all Obstacles
+        this.obstacles.forEach((obstacle, index) => {
+            // Remove the Obstacle from JS.
+            this.obstacles.splice(index, 1);
+
+            // Remove the Obstacle from HTML
+            obstacle.element.remove();
+        });
+
+        // Hide the current Game Screen
+        this.gameScreen.style.display = "none";
+
+        //this.gameEndScreen.style.display = "none";
+
+        // In order to display the Game End Screen
+        this.gameWinScreen.style.display = "block";
     }
 }
 
