@@ -143,6 +143,7 @@ class Game {
             if (time < 0) {
                 clearInterval(count);
                 this.endGame();
+
             }
             time --;
         }, 1000);
@@ -172,13 +173,14 @@ class Game {
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
     }
+}
 
 
          
     
     
 
-};
+
 
 
 
