@@ -19,11 +19,6 @@ window.onload = function () {
     game.start();
   };
 
-
-  
-
-
-
   function handleKeydown(event) {
     const key = event.key;
     const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"]
