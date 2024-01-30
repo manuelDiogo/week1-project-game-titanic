@@ -135,12 +135,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -5));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -5, (Math.floor(Math.random() * 550 + 0))));
                 this.isPushingObstacle = false;
 
-            }, 300);
-
-
+            }, 700);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingIce) {
@@ -148,11 +146,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 100, 8, -300));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 100, 8, -300, (Math.floor(Math.random() * 550 + 0))));
                 this.isPushingIce = false;
 
-            }, 800);
-
+            }, 1000);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingBigIce) {
@@ -160,11 +157,32 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 150, 150, 2, -60));
+                this.obstacles.push(new Obstacle(this.gameScreen, 200, 200, 2, -60, (Math.floor(Math.random() * 550 + 0))));
                 this.isPushingBigIce = false;
 
-            }, 1500);
+            }, 2800);
+        }
 
+        if (!this.obstacles.length + 100 && !this.isPushingLongIce) {
+            this.isPushingLongIce = true;
+
+            setTimeout(() => {
+
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 0));
+                this.isPushingLongIce = false;
+
+            }, 800);
+        }
+
+        if (!this.obstacles.length + 100 && !this.isPushingDownIce) {
+            this.isPushingDownIce = true;
+
+            setTimeout(() => {
+
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 550));
+                this.isPushingDownIce = false;
+
+            }, 800);
         }
 
 

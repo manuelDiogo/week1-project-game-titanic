@@ -1,9 +1,11 @@
 class Obstacle {
-    constructor(gameScreen, width, height, velocity, kickback) {
+    constructor(gameScreen, width, height, velocity, kickback, position) {
         this.gameScreen = gameScreen;
 
         // Random Position
-        this.top = Math.floor(Math.random() * 550 + 0);
+        //this.top = (Math.floor(Math.random() * 550 + 0));
+
+        this.top = position
 
         this.right = 0;
         this.width = width;
@@ -43,6 +45,10 @@ class Obstacle {
 
 
 };
+
+class boundaryIce extends Obstacle {
+
+}
 
 
 

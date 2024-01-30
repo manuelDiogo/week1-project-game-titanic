@@ -48,7 +48,7 @@ const restartButtonn = document.getElementById("restart-buttonn");
 
             break;
           case " ":
-            game.player.directionX = 0;
+            game.player.directionX =0;
             break;
           case "ArrowDown":
 
