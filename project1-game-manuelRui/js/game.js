@@ -176,6 +176,7 @@ class Game {
 
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
+
     }
 };
 
