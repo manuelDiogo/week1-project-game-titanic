@@ -1,5 +1,5 @@
 class Obstacle {
-    constructor(gameScreen, width, height, velocity) {
+    constructor(gameScreen, width, height, velocity, kickback) {
         this.gameScreen = gameScreen;
 
         // Random Position
@@ -18,7 +18,9 @@ class Obstacle {
         this.element.style.right = `${this.right}px`;
         this.element.style.top = `${this.top}px`;
 
-        this.velocity = velocity
+        this.velocity = velocity;
+
+        this.kickback = kickback;
 
         this.gameScreen.appendChild(this.element);
     }
@@ -29,14 +31,9 @@ class Obstacle {
         this.updatePosition()
     }
 
-    iceMove() {
-
-
-
-    }
 
     collision() {
-        this.right - 5;
+        this.right += this.kickback;
     }
     
     updatePosition() {

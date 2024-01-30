@@ -9,7 +9,7 @@ class Game {
         this.skyScreen = document.getElementById("sky-img");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
-        this.player = new Player(this.gameScreen, 250, 150, 150, 70, "./images/titanic.png")
+        this.player = new Player(this.gameScreen, 125, 75, 75, 35, "./images/titanic.png")
 
         // Style for the game board.
         this.height = 600;
@@ -93,7 +93,9 @@ class Game {
                     obstacle.element.remove();
                 }, 150);
 
-                obstacle.right -= 3
+                obstacle.right -= 10;
+
+                //this.player.directionX = -30;
 
                 this.obstacles.splice(i, 1);
 
@@ -124,16 +126,16 @@ class Game {
         //const iceBerg2 = new Obstacle(this.gameScreen, 200, 200)
 
         // If there are no obstacles, push a new one in after 1 second and a half
-        if (!this.obstacles.length + 9 && !this.isPushingObstacle) {
+        if (!this.obstacles.length + 20 && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
 
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -5));
                 this.isPushingObstacle = false;
 
-            }, 700);
+            }, 300);
 
 
         }
@@ -142,10 +144,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 200, 200, 2));
+                this.obstacles.push(new Obstacle(this.gameScreen, 150, 150, 2, -60));
                 this.isPushingIce = false;
 
-            }, 3100);
+            }, 2000);
 
         }
 
@@ -155,7 +157,7 @@ class Game {
     }
 
     startTimer() {
-        let time = 20;
+        let time = 60;
 
         let timerElement = document.getElementById("time-remaining");
 
