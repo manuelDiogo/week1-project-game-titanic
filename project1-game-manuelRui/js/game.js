@@ -24,7 +24,7 @@ class Game {
         this.score = 0;
 
         // Lives
-        this.lives = 10;
+        this.lives = 3;
 
         // Variable to Check If I'm in the Process of creating an Obstacle
         this.isPushingObstacle = false;
@@ -95,7 +95,7 @@ class Game {
 
                 this.obstacles.splice(i, 1);
 
-                this.lives--          
+                //this.lives--          
             }
 
             else if (obstacle.right > this.width) {
@@ -109,7 +109,7 @@ class Game {
             }
         }
 
-        if (this.lives === 0 || this.startTimer === 0) {
+        if (this.lives === 0) {
             this.endGame();
         }
 
@@ -129,9 +129,29 @@ class Game {
         lives.innerHTML = this.lives;
     }
 
+    startTimer() {
+        let time = 10;
+
+        let timerElement = document.getElementById("time-remaining");
+
+        let count = setInterval(() => {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
+
+            if (time < 0) {
+                clearInterval(count);
+                this.endGame();
+            }
+            time --;
+        }, 1000);
+         
+    }
+
     endGame() {
         // Change the gameIsOver status. if it's true, remeber that this is going to break the animaton loop.
-        this.gameIsOverOver = true;
+        this.gameIsOver = true;
 
         // Remove Player
         this.player.element.remove();
@@ -151,8 +171,8 @@ class Game {
 
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
-
     }
+<<<<<<< HEAD
 
     startTimer() {
         let time = 10;
@@ -181,6 +201,8 @@ class Game {
     }
     
 
+=======
+>>>>>>> 10982fffb87e88975b253b692a028f8b2ee4d484
 };
 
 
