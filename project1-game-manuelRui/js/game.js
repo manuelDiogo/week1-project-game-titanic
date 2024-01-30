@@ -9,8 +9,7 @@ class Game {
         this.skyScreen = document.getElementById("sky-img");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
-        this.player = new Player(this.gameScreen, 250, 150, 150, 70, "./images/titanic.png");
-
+        this.player = new Player(this.gameScreen, 250, 150, 150, 70, "./images/titanic.png")
 
         // Style for the game board.
         this.height = 600;
@@ -51,12 +50,11 @@ class Game {
         this.gameScreen.style.display = "block";
 
 
-
-
-
-
         // - Starts the game loop 
         this.gameLoop();
+
+        // - Starts timer
+        this.startTimer();
     }
 
     gameLoop() {
@@ -75,6 +73,8 @@ class Game {
         /* Score, Lives, Scoreboard */
         let score = document.getElementById("score");
         let lives = document.getElementById("lives");
+
+
 
         /* Every frame of the game, I want to check if the car is moving */
         this.player.move();
@@ -113,7 +113,7 @@ class Game {
             }
         }
 
-        if (this.lives === 0) {
+        if (this.lives === 0 || this.startTimer === 0) {
             this.endGame();
         }
 
@@ -158,6 +158,27 @@ class Game {
         this.gameEndScreen.style.display = "block";
 
     }
+
+    startTimer() {
+        let time = 10;
+
+        let timerElement = document.getElementById("time-remaining");
+
+        let count = setInterval(function() {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+
+            timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
+
+            if (time <= 0) {
+                clearInterval(count);
+                this.endGame();
+            }
+            time --;
+        }, 1000);
+         
+    }
+    
 
 };
 
