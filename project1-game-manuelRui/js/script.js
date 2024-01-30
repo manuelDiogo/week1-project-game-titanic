@@ -26,7 +26,7 @@ const restartButtonn = document.getElementById("restart-buttonn");
 
   function handleKeydown(event) {
     const key = event.key;
-    const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"]
+    const possibleKeys = ["ArrowLeft", "ArrowUp", " ", "ArrowDown"]
 
     if (possibleKeys.includes(key)) {
       event.preventDefault();
@@ -47,7 +47,7 @@ const restartButtonn = document.getElementById("restart-buttonn");
 
 
             break;
-          case "ArrowRight":
+          case " ":
             game.player.directionX = 0;
             break;
           case "ArrowDown":
@@ -72,7 +72,7 @@ const restartButtonn = document.getElementById("restart-buttonn");
 
   function handleKeyup(event) {
     const key = event.key;
-    const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"]
+    const possibleKeys = ["ArrowLeft", "ArrowUp", " ", "ArrowDown"]
 
     if (possibleKeys.includes(key)) {
       event.preventDefault();
@@ -85,7 +85,7 @@ const restartButtonn = document.getElementById("restart-buttonn");
           case "ArrowUp":
             game.player.directionY = -5;
             break;
-          case "ArrowRight":
+          case " ":
             game.player.directionX = 3;
             break;
           case "ArrowDown":

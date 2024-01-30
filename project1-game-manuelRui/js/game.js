@@ -10,7 +10,7 @@ class Game {
         this.gameWinScreen = document.getElementById("win-game");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
-        this.player = new Player(this.gameScreen, 125, 75, 75, 35, "./images/titanic.png")
+        this.player = new Player(this.gameScreen, 125, 75, 75, 50, "./images/titanic.png")
 
         // Style for the game board.
         this.height = 600;
@@ -68,10 +68,6 @@ class Game {
             return;
         }
 
-        else if (this.gameIsWon) {
-            return;
-        }
-
         this.update();
 
         window.requestAnimationFrame(() => this.gameLoop());
@@ -106,7 +102,7 @@ class Game {
 
                 this.obstacles.splice(i, 1);
 
-                this.lives--          
+                //this.lives--          
             }
 
             else if (obstacle.right > this.width) {
@@ -125,17 +121,15 @@ class Game {
             this.endGame();
         }
 
-        if(this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
+        else if(this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
             this.winGame();
 
         }
 
-        //const iceBerg1 = new Obstacle(this.gameScreen, 50, 50)
-
-        //const iceBerg2 = new Obstacle(this.gameScreen, 200, 200)
+        
 
         // If there are no obstacles, push a new one in after 1 second and a half
-        if (!this.obstacles.length + 20 && !this.isPushingObstacle) {
+        if (!this.obstacles.length + 100 && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
 
 
@@ -148,15 +142,28 @@ class Game {
 
 
         }
-        if (!this.obstacles.length + 9 && !this.isPushingIce) {
+
+        if (!this.obstacles.length + 100 && !this.isPushingIce) {
             this.isPushingIce = true;
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 150, 150, 2, -60));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 100, 8, -300));
                 this.isPushingIce = false;
 
-            }, 2000);
+            }, 800);
+
+        }
+
+        if (!this.obstacles.length + 100 && !this.isPushingBigIce) {
+            this.isPushingBigIce = true;
+
+            setTimeout(() => {
+
+                this.obstacles.push(new Obstacle(this.gameScreen, 150, 150, 2, -60));
+                this.isPushingBigIce = false;
+
+            }, 1500);
 
         }
 
@@ -166,7 +173,7 @@ class Game {
     }
 
     startTimer() {
-        let time = 60;
+        let time = 120;
 
         let timerElement = document.getElementById("time-remaining");
 
