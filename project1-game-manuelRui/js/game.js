@@ -172,37 +172,12 @@ class Game {
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
     }
-<<<<<<< HEAD
 
-    startTimer() {
-        let time = 10;
 
-        let timerElement = document.getElementById("time-remaining");
-
-        let count = setInterval(function() {
-            
-            let minutes = Math.floor(time / 60);
-            let seconds = time % 60;
-
-            timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
-
-            time--;
-
-            if (time <= 0) {
-                
-                clearInterval(count);
-                this.endGame();
-            }
-            
-
-        
-        }, 1000);
          
-    }
+    
     
 
-=======
->>>>>>> 10982fffb87e88975b253b692a028f8b2ee4d484
 };
 
 

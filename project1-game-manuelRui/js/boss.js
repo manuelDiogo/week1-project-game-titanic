@@ -1,16 +1,14 @@
-class Obstacle {
+class BigIce {
     constructor(gameScreen) {
         this.gameScreen = gameScreen;
 
         // Random Position
         this.top = Math.floor(Math.random() * 550 + 0);
 
-        
 
-        
         this.right = 0;
-        this.width = 50;
-        this.height = 50;
+        this.width = 200;
+        this.height = 200;
 
 
         // create the HTML element and create deafult styling
@@ -42,13 +40,4 @@ class Obstacle {
 
 
 };
-
-class BigIce extends Obstacle {
-
-
-
-}
-
-
-
-
+    
