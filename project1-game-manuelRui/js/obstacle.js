@@ -1,5 +1,5 @@
 class Obstacle {
-    constructor(gameScreen, width, height, velocity, kickback, position, image) {
+    constructor(gameScreen, width, height, velocity, kickback, position, startPosition, image) {
         this.gameScreen = gameScreen;
 
         // Random Position
@@ -7,7 +7,7 @@ class Obstacle {
 
         this.top = position
 
-        this.right = -210;
+        this.right = startPosition;
         this.width = width;
         this.height = height;
 

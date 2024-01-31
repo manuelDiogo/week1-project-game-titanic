@@ -111,8 +111,10 @@ class Game {
                 setTimeout(() => {
                     //obstacle.collision();
                     obstacle.element.remove();
-                    
+
                 }, 150);
+
+                this.obstacles.splice(i, 1);
 
 
                 //obstacle.right -= 10;
@@ -120,16 +122,18 @@ class Game {
                 if (obstacle.height === 40) {
 
                     this.player.directionY += 5;
+                    this.player.directionX -= 10;
                 }
 
                 if (obstacle.height === 60) {
 
                     this.player.directionY -= 5;
+                    this.player.directionX -= 10;
                 }
 
                 if (obstacle.height === 50) {
 
-                this.player.directionX -= 8;
+                    this.player.directionX -= 8;
 
                 }
 
@@ -142,17 +146,21 @@ class Game {
 
                     this.player.directionX -= 17;
                 }
-
-
-
-                this.obstacles.splice(i, 1);
-
                 //this.lives--          
             }
 
-
             if (obstacle.right > this.width) {
-                this.score++;
+                //this.score++;
+
+                // Remove the Obstacle HTML Element from the HTML.
+                obstacle.element.remove();
+
+                // Remove the Obstacle from the Game Class' obstacles array.
+                this.obstacles.splice(i, 1);
+            }
+
+            else if (obstacle.velocity < 0 && (obstacle.right + obstacle.width) <= 0) {
+                //this.score++;
 
                 // Remove the Obstacle HTML Element from the HTML.
                 obstacle.element.remove();
@@ -163,8 +171,6 @@ class Game {
 
         }
 
-
-
         if (this.lives === 0) {
             this.endGame();
         }
@@ -174,8 +180,6 @@ class Game {
 
         }
 
-
-
         // If there are no obstacles, push a new one in after 1 second and a half
         if (!this.obstacles.length + 100 && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
@@ -183,7 +187,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -20, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -20, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
                 this.isPushingObstacle = false;
 
             }, 700);
@@ -194,7 +198,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, -10, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, -10, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
                 this.isPushingIce = false;
 
             }, 900);
@@ -205,7 +209,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, -20, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, -20, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
                 this.isPushingBigIce = false;
 
             }, 2500);
@@ -216,7 +220,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 40, 2, -40, 0, "./images/icebergdown.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 40, -2, -40, 0, 1200, "./images/icebergdown.png"));
                 this.isPushingLongIce = false;
 
             }, 500);
@@ -227,19 +231,18 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 60, 2, -20, 540, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 60, -2, -20, 540, 1200, "./images/iceberg.png"));
                 this.isPushingDownIce = false;
 
             }, 500);
         }
-
 
         score.innerHTML = this.score;
         lives.innerHTML = this.lives;
     }
 
     startTimer() {
-        let time = 10;
+        let time = 90;
 
         let timerElement = document.getElementById("time-remaining");
 
@@ -293,7 +296,7 @@ class Game {
     }
 
     winGame() {
-        // Change the gameIsOver status. if it's true, remeber that this is going to break the animaton loop.
+        // Change the gameIsOver status. if it's true, remember that this is going to break the animaton loop.
         this.gameIsWon = true;
 
         // Remove Player
@@ -320,7 +323,7 @@ class Game {
 
         this.soundTrack1.play()
 
-        
+
     }
 }
 
