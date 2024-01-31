@@ -69,7 +69,7 @@ class Game {
         this.soundTrack2 = document.getElementById("soundtracklose");
         //this.soundTrack5 = document.getElementById("soundtrackscream");
         this.soundTrack.play();
-        this.soundTrack.volume = 0.1;
+        this.soundTrack.volume = 0.5;
     }
 
     borderUp() {
@@ -239,7 +239,7 @@ class Game {
     }
 
     startTimer() {
-        let time = 120;
+        let time = 10;
 
         let timerElement = document.getElementById("time-remaining");
 
@@ -289,9 +289,7 @@ class Game {
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
 
-        this.soundTrack2.play()
-
-
+        this.soundTrack2.play();
     }
 
     winGame() {

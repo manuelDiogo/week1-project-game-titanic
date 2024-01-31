@@ -88,7 +88,7 @@ const restartButtonn = document.getElementById("restart-buttonn");
           case " ":
             this.soundTrack6 = document.getElementById("soundtrackengine");
             this.soundTrack6.play()
-            this.soundTrack6.volume = 0.2;
+            this.soundTrack6.volume = 0.8;
             game.player.directionX = 3;
             break;
           case "ArrowDown":
