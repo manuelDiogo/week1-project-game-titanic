@@ -75,8 +75,12 @@ class Player {
         ) {
             
             //this.directionX -= 7;
+            this.soundTrack5 = document.getElementById("soundtrackscream");
+            this.soundTrack5.volume = 0.4;
+            this.soundTrack5.play()
             
             return true;
+
         }
 
         else {

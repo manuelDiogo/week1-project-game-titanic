@@ -34,9 +34,9 @@ class Obstacle {
     }
 
 
-    collision() {
+    /*collision() {
        player.directionX += this.kickback;
-    }
+    }*/
 
 
     updatePosition() {

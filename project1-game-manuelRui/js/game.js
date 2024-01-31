@@ -67,7 +67,9 @@ class Game {
         this.soundTrack = document.getElementById("soundtrackgame");
         this.soundTrack1 = document.getElementById("soundtrackwin");
         this.soundTrack2 = document.getElementById("soundtracklose");
+        //this.soundTrack5 = document.getElementById("soundtrackscream");
         this.soundTrack.play();
+        this.soundTrack.volume = 0.1;
     }
 
     borderUp() {
@@ -102,6 +104,9 @@ class Game {
             obstacle.move();
 
             if (this.player.didCollide(obstacle)) {
+
+                //this.soundTrack5.play();
+                //this.soundTrack5.volume = 0.1;
 
                 setTimeout(() => {
                     //obstacle.collision();
