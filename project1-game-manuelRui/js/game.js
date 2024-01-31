@@ -12,7 +12,7 @@ class Game {
         // I am going to create a player in the future. For now, I'll leave it to null.
         this.player = new Player(this.gameScreen, 125, 75, 75, 50, "./images/titanic.png")
 
-        //this.borderObstacle = new Obstacle(this.gameScreen, width, height, velocity, kickback, position, image)
+        //this.obstacle = new Obstacle(this.gameScreen, width, height, velocity, kickback, position, image)
 
         // Style for the game board.
         this.height = 600;
@@ -23,9 +23,9 @@ class Game {
         this.obstacles = [];
 
         // Border Obstacles
-        this.borders =[];
+        this.borders = [];
 
-    
+
         // Score
         this.score = 0;
 
@@ -63,6 +63,15 @@ class Game {
 
         // - Starts timer
         this.startTimer();
+
+        this.soundTrack = document.getElementById("soundtrackgame");
+        this.soundTrack1 = document.getElementById("soundtrackwin");
+        this.soundTrack2 = document.getElementById("soundtracklose");
+        this.soundTrack.play();
+    }
+
+    borderUp() {
+
     }
 
     gameLoop() {
@@ -92,27 +101,52 @@ class Game {
             const obstacle = this.obstacles[i];
             obstacle.move();
 
-            
-
             if (this.player.didCollide(obstacle)) {
 
                 setTimeout(() => {
-                    
-                    obstacle.collision();
+                    //obstacle.collision();
                     obstacle.element.remove();
-
+                    
                 }, 150);
 
-                obstacle.right -= 10;
 
-                //this.player.directionX = -30;
+                //obstacle.right -= 10;
+
+                if (obstacle.height === 40) {
+
+                    this.player.directionY += 5;
+                }
+
+                if (obstacle.height === 60) {
+
+                    this.player.directionY -= 5;
+                }
+
+                if (obstacle.height === 50) {
+
+                this.player.directionX -= 8;
+
+                }
+
+                if (obstacle.height === 85) {
+
+                    this.player.directionX -= 12;
+                }
+
+                if (obstacle.height === 180) {
+
+                    this.player.directionX -= 17;
+                }
+
+
 
                 this.obstacles.splice(i, 1);
 
                 //this.lives--          
             }
 
-            else if (obstacle.right > this.width) {
+
+            if (obstacle.right > this.width) {
                 this.score++;
 
                 // Remove the Obstacle HTML Element from the HTML.
@@ -124,18 +158,18 @@ class Game {
 
         }
 
-        
+
 
         if (this.lives === 0) {
             this.endGame();
         }
 
-        else if(this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
+        else if (this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
             this.winGame();
 
         }
 
-        
+
 
         // If there are no obstacles, push a new one in after 1 second and a half
         if (!this.obstacles.length + 100 && !this.isPushingObstacle) {
@@ -144,7 +178,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -5, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -20, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
                 this.isPushingObstacle = false;
 
             }, 700);
@@ -155,7 +189,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 100, 8, -300, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, -10, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
                 this.isPushingIce = false;
 
             }, 900);
@@ -166,7 +200,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 200, 200, 2, -60, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, -20, (Math.floor(Math.random() * 550 + 0)), "./images/iceberg.png"));
                 this.isPushingBigIce = false;
 
             }, 2500);
@@ -177,10 +211,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 0, "./images/icebergdown.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 40, 2, -40, 0, "./images/icebergdown.png"));
                 this.isPushingLongIce = false;
 
-            }, 400);
+            }, 500);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingDownIce) {
@@ -188,10 +222,10 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 550, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 100, 60, 2, -20, 540, "./images/iceberg.png"));
                 this.isPushingDownIce = false;
 
-            }, 400);
+            }, 500);
         }
 
 
@@ -205,8 +239,8 @@ class Game {
         let timerElement = document.getElementById("time-remaining");
 
         let count = setInterval(() => {
-            let minutes = Math.floor(time / 60);
-            let seconds = time % 60;
+            let minutes = Math.floor(time / 60).toString().padStart(2, "0");
+            let seconds = (time % 60).toString().padStart(2, "0");
 
             timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
 
@@ -245,8 +279,14 @@ class Game {
 
         this.gameWinScreen.style.display = "none";
 
+        this.soundTrack.pause()
+
         // In order to display the Game End Screen
         this.gameEndScreen.style.display = "block";
+
+        this.soundTrack2.play()
+
+
     }
 
     winGame() {
@@ -268,10 +308,16 @@ class Game {
         // Hide the current Game Screen
         this.gameScreen.style.display = "none";
 
-        //this.gameEndScreen.style.display = "none";
+
+        this.soundTrack.pause()
 
         // In order to display the Game End Screen
         this.gameWinScreen.style.display = "block";
+
+
+        this.soundTrack1.play()
+
+        
     }
 }
 

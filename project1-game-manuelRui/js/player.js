@@ -25,14 +25,12 @@ class Player {
         this.directionY = 0;
 
         this.gameScreen.appendChild(this.element);
-        this.element.setAttribute("id","player");
+        this.element.setAttribute("id", "player");
     }
 
     move() {
         this.left += this.directionX;
         this.top += this.directionY;
-
-        
 
         // To Handle the right side of the screen: the car stops in the Right Border of the Game Screen
         if (this.left + this.width > this.gameScreen.offsetWidth) {
@@ -63,23 +61,33 @@ class Player {
     }
 
     didCollide(obstacle) {
+
         const playerRect = this.element.getBoundingClientRect();
         const obstacleRect = obstacle.element.getBoundingClientRect();
 
         // If part of my bluecar is inside the redCar, then I have a collision.
+        
         if (
             playerRect.left < obstacleRect.right &&
             playerRect.right > obstacleRect.left &&
             playerRect.top < obstacleRect.bottom &&
             playerRect.bottom > obstacleRect.top
         ) {
-            this.directionX -= 5;
+            
+            //this.directionX -= 7;
+            
             return true;
-        } else {
+        }
+
+        else {
             return false;
         }
 
+
     }
+
+    
+    
 
 };
 

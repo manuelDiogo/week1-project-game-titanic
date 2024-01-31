@@ -35,15 +35,14 @@ class Obstacle {
 
 
     collision() {
-        this.right += this.kickback;
+       player.directionX += this.kickback;
     }
-    
+
+
     updatePosition() {
         this.element.style.right = `${this.right}px`;
         this.element.style.top = `${this.top}px`;
     }
-
-
 };
 
 

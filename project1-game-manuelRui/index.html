@@ -1,82 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <title>TITANIC XTREME DRIFT</title>
-  </head>
-  <body>
-    <main>
-      <!-- #game-intro is initially shown on the game start screen -->
-      
-      <div id="game-intro">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <img src="./images/titaniclogo.png" alt="" class="logo-img" />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <!--<img src="./images/titanicicon2.png" alt="" class="logo-img" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>TITANIC XTREME DRIFT</title>
+</head>
+
+<body>
+  <main>
+    <!-- #game-intro is initially shown on the game start screen -->
+
+    <div id="game-intro">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <img src="./images/titaniclogo.png" alt="" class="logo-img" />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <!--<img src="./images/titanicicon2.png" alt="" class="logo-img" />
         <br />-->
-        <button id="start-button">Start Game</button>
-        <p>Use the left and right arrow to steer the ship!</p>
-        <img src="./images/arrows.png" alt="" class="arrows-img" />
-      </div>
+      <button id="start-button">Start Game</button>
+      <p>Use the left and right arrow to steer the ship!</p>
+      <img src="./images/arrows.png" alt="" class="arrows-img" />
+    </div>
+    <div>
+      <img id="sky-img" src="./images/night sky.jpeg" alt="" />
+    </div>
+
+    <div id="game-container">
       <div>
-        <img id="sky-img" src="./images/night sky.jpeg" alt=""  />
+        <h2>Stats</h2>
+        <p>Score: <span id="score">0</span></p>
+        <p>Lives: <span id="lives">3</span></p>
       </div>
+      <div id="time-remaining">Time Left: <span>00:00</span></div>
+      <!-- #game-screen is initially hidden using CSS style display: none -->
 
-      <div id="game-container">
-        <div>
-          <h2>Stats</h2>
-          <p>Score: <span id="score">0</span></p>
-          <p>Lives: <span id="lives">3</span></p>
-        </div>
-        <div id="time-remaining">Time Left: <span>00:00</span></div>
-        <!-- #game-screen is initially hidden using CSS style display: none -->
-        
-        
-        <div id="game-screen"></div>
-        <audio id="soundtrackgame" src=""></audio>
-        <audio id="soundtracklose" src=""></audio>
-        <audio id="soundtrackwin" src=""></audio>
-        <audio id="soundtrackcollision" src=""></audio>
-        <audio id="soundtrackengine" src=""></audio>
-      </div>
 
-      <!-- #game-end is initially hidden using CSS style display: none -->
-      <div id="game-end">
-        <img src="./images/titanicicon2.png" alt="" class="logo-img" />
-        <h1>Game Over</h1>
-        <br />
-        <button id="restart-button">Restart</button>
-      </div>
+      <div id="game-screen"></div>
+      <audio id="soundtrackgame" src="./audio/gas.mp3"></audio>
+      <audio id="soundtracklose" src="./audio/People Screaming.mp3"></audio>
+      <audio id="soundtrackwin" src="./audio/My Heart Will Go On.mp3"></audio>
+    </div>
 
-      <div id="win-game">
-        <img src="./images/wingame.jpg" alt="">
-        <h1>You Win!</h1>
-        <br/>
-        <button id="restart-buttonn">Restart</button>
-      </div>
-    </main>
+    <!-- #game-end is initially hidden using CSS style display: none -->
+    <div id="game-end">
+      <img src="./images/titanicicon2.png" alt="" class="logo-img" />
+      <h1>Game Over</h1>
+      <br />
+      <button id="restart-button">Restart</button>
+    </div>
 
-    <script type="text/javascript" src="js/obstacle.js"></script>
-    <script type="text/javascript" src="js/player.js"></script>
-    <script type="text/javascript" src="js/game.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    
-  </body>
+    <div id="win-game">
+      <img src="./images/wingame.jpg" alt="">
+      <h1>You Win!</h1>
+      <br />
+      <button id="restart-buttonn">Restart</button>
+    </div>
+  </main>
+
+  <script type="text/javascript" src="js/obstacle.js"></script>
+  <script type="text/javascript" src="js/player.js"></script>
+  <script type="text/javascript" src="js/game.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+
 </html>
-
-
-
-
