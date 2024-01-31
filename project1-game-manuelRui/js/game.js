@@ -12,6 +12,8 @@ class Game {
         // I am going to create a player in the future. For now, I'll leave it to null.
         this.player = new Player(this.gameScreen, 125, 75, 75, 50, "./images/titanic.png")
 
+        //this.borderObstacle = new Obstacle(this.gameScreen, width, height, velocity, kickback, position, image)
+
         // Style for the game board.
         this.height = 600;
         this.width = 1200;
@@ -20,9 +22,10 @@ class Game {
         // Obstacles
         this.obstacles = [];
 
-        // Boss
-        this.bigIces = [];
+        // Border Obstacles
+        this.borders =[];
 
+    
         // Score
         this.score = 0;
 
@@ -89,11 +92,15 @@ class Game {
             const obstacle = this.obstacles[i];
             obstacle.move();
 
+            
+
             if (this.player.didCollide(obstacle)) {
 
                 setTimeout(() => {
+                    
                     obstacle.collision();
                     obstacle.element.remove();
+
                 }, 150);
 
                 obstacle.right -= 10;
@@ -116,6 +123,8 @@ class Game {
             }
 
         }
+
+        
 
         if (this.lives === 0) {
             this.endGame();
@@ -171,7 +180,7 @@ class Game {
                 this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 0, "./images/icebergdown.png"));
                 this.isPushingLongIce = false;
 
-            }, 500);
+            }, 400);
         }
 
         if (!this.obstacles.length + 100 && !this.isPushingDownIce) {
@@ -182,7 +191,7 @@ class Game {
                 this.obstacles.push(new Obstacle(this.gameScreen, 100, 50, 2, -60, 550, "./images/iceberg.png"));
                 this.isPushingDownIce = false;
 
-            }, 500);
+            }, 400);
         }
 
 
