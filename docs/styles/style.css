@@ -27,6 +27,7 @@ body {
 #game-screen {
   display: none;
   align-content: center;
+  margin-top: 50px;
   
   overflow: hidden;
   position: relative;
@@ -83,9 +84,10 @@ body button {
   display: none;
   text-align: center;
   color: rgb(0, 0, 0);
-  top: 8px;
-  left: 180px;
+  top: 10px;
+  left: 128px;
   position: absolute;
   letter-spacing: 1px;
+  font-size: 40px;
 }
 
