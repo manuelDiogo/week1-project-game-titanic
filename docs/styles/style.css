@@ -15,7 +15,7 @@ body, html {
 
 #game-intro {
   display: flex;
-  background-image: url(../images/intropic.png);
+  background-image: url(../images/intropic.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -73,7 +73,7 @@ body, html {
 
 #win-game {
   display: none;
-  background-image: url(/docs/images/wingamefinal.png);
+  background-image: url(/docs/images/wingamefinal.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
