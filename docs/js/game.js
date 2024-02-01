@@ -229,7 +229,7 @@ class Game {
     }
 
     startTimer() {
-        let time = 3;
+        let time = 119;
 
         let timerElement = document.getElementById("time-remaining");
 
@@ -237,7 +237,7 @@ class Game {
             let minutes = Math.floor(time / 60).toString().padStart(2, "0");
             let seconds = (time % 60).toString().padStart(2, "0");
 
-            timerElement.innerHTML = `Time left: ${minutes}:${seconds}`;
+            timerElement.innerHTML = `Time left ${minutes}:${seconds}`;
 
             if (time < 0) {
                 clearInterval(count);
@@ -248,6 +248,7 @@ class Game {
                 clearInterval(count);
             }
             time--;
+
         }, 1000);
     }
 

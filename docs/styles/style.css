@@ -1,6 +1,11 @@
 body {
   padding: 0;
+  margin: 0;
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
+  background-color: rgb(0, 0, 0);
 }
 
 body, html {
@@ -9,7 +14,7 @@ body, html {
 }
 
 #game-intro {
-  
+  display: flex;
   background-image: url(../images/intropic.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -38,63 +43,105 @@ body, html {
   background-image: url(../images/sea.png);
   background-size: cover;
   animation: slide 5s linear infinite;
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-width: 15px;
 }
 
 @keyframes slide {
   from {
-    background-position: -60px, -10px;
+    background-position: 0px, 0px;
   }
   to {
-    background-position: -170px, -20px;
+    background-position: -3000px, -3000px;
   }
 }
 
-
 #game-end {
   display: none;
+  background-image: url(/docs/images/gameover.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 500px;
+}
+
+.logo-img {
+  width: 1000px;
+  position: center;
 }
 
 #win-game {
   display: none;
+  background-image: url(/docs/images/wingamefinal.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 750px;
+  
 }
 
 .game-intro p {
   font-size: 18px;
   font-family: "Verdana";
-  
-}
-
-.logo-img {
-  width: 350px;
 }
 
 .arrows-img {
   width: 150px;
 }
 
-body #start-button {
+#start-button {
   font-family: "ArcadeClassic";
-  font-size: 30px;
-  background-color: #1f2ea5;
-  color: #fff;
+  font-size: 50px;
+  background-color: #1f2fa500;
+  color: rgb(255, 255, 255);
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 0px;
-  margin-left: 300px;
+  margin-left: 900px;
+  margin-top: 230px;
   position: absolute;
   left: 0px;
+  cursor: pointer; 
+}
+
+#restart-button {
+  font-family: "ArcadeClassic";
+  font-size: 50px;
+  background-color: #1f2fa500;
+  color: rgb(255, 255, 255);
+  padding: 20px 40px;
+  border: 0px;
+  bottom: -520px;
+  cursor: pointer; 
+  position: relative;
+  letter-spacing: 5px;
+}
+
+#restart-buttonWin {
+  font-family: "ArcadeClassic";
+  font-size: 50px;
+  background-color: #1f2fa500;
+  color: rgb(255, 255, 255);
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  position: relative;
+  bottom: -650px;
+  cursor: pointer; 
+  letter-spacing: 5px;
 }
 
 #time-remaining {
   font-family: "ArcadeClassic";
   display: none;
   text-align: center;
-  color: rgb(0, 0, 0);
-  top: 10px;
-  left: 128px;
-  position: absolute;
+  color: rgb(255, 255, 255);
+  margin-top: 1px;
+  position: fixed;
   letter-spacing: 1px;
   font-size: 40px;
 }

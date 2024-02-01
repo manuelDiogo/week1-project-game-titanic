@@ -78,7 +78,7 @@ class Player {
             this.soundTrack5.volume = 0.5;
             this.soundTrack5.play()
             
-            return true;
+            //return true;
 
         }
 
