@@ -1,15 +1,13 @@
 class Obstacle {
-    constructor(gameScreen, width, height, velocity, kickback, position, startPosition, image) {
+    constructor(gameScreen, width, height, velocity, position, startPosition, image) {
         this.gameScreen = gameScreen;
 
-        // Random Position
-        //this.top = (Math.floor(Math.random() * 550 + 0));
-
         this.top = position
-
         this.right = startPosition;
         this.width = width;
         this.height = height;
+
+        this.velocity = velocity;
 
         // create the HTML element and create deafult styling
         this.element = document.createElement("img");
@@ -20,24 +18,15 @@ class Obstacle {
         this.element.style.right = `${this.right}px`;
         this.element.style.top = `${this.top}px`;
 
-        this.velocity = velocity;
-
-        this.kickback = kickback;
-
         this.gameScreen.appendChild(this.element);
     }
 
     move() {
         // Move obstacles from right to left
         this.right += this.velocity;
+        
         this.updatePosition()
     }
-
-
-    /*collision() {
-       player.directionX += this.kickback;
-    }*/
-
 
     updatePosition() {
         this.element.style.right = `${this.right}px`;

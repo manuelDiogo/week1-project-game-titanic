@@ -21,7 +21,7 @@ class Player {
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
 
-        this.directionX = 0;
+        this.directionX = 3;
         this.directionY = 0;
 
         this.gameScreen.appendChild(this.element);
@@ -32,22 +32,22 @@ class Player {
         this.left += this.directionX;
         this.top += this.directionY;
 
-        // To Handle the right side of the screen: the car stops in the Right Border of the Game Screen
+        // To Handle the right side of the screen: the ship stops in the Right Border of the Game Screen
         if (this.left + this.width > this.gameScreen.offsetWidth) {
             this.left = this.gameScreen.offsetWidth - this.width;
         }
 
-        // To Handle the left side of the screen: the car stops in the Left Border of the Game Screen
+        // To Handle the left side of the screen: the ship stops in the Left Border of the Game Screen
         else if (this.left <= 0) {
             this.left = 0;
         }
 
-        // To Handle the bottom side of the screen; car stops at the bottom border of the screen
+        // To Handle the bottom side of the screen; ship stops at the bottom border of the screen
         if (this.top + this.height > this.gameScreen.offsetHeight) {
             this.top = this.gameScreen.offsetHeight - this.height;
         }
 
-        // To Handle the top side of the Screen: Car stops in the Top Border of the Game Screen
+        // To Handle the top side of the Screen: ship stops in the Top Border of the Game Screen
         else if (this.top <= 0) {
             this.top = 0;
         }
@@ -65,7 +65,7 @@ class Player {
         const playerRect = this.element.getBoundingClientRect();
         const obstacleRect = obstacle.element.getBoundingClientRect();
 
-        // If part of my bluecar is inside the redCar, then I have a collision.
+        // If part of TITANIC is inside an iceberg, then I have a collision.
         
         if (
             playerRect.left < obstacleRect.right &&
@@ -74,8 +74,7 @@ class Player {
             playerRect.bottom > obstacleRect.top
         ) {
             
-            //this.directionX -= 7;
-            this.soundTrack5 = document.getElementById("soundtrackscream");
+            this.soundTrack5 = document.getElementById("soundtrackCrash");
             this.soundTrack5.volume = 0.5;
             this.soundTrack5.play()
             
@@ -87,4 +86,6 @@ class Player {
             return false;
         }
     }
+
+    
 };

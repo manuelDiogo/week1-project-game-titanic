@@ -22,22 +22,18 @@ class Game {
         // Obstacles
         this.obstacles = [];
 
-        // Border Obstacles
-        this.borders = [];
-
-
+        
         // Score
         this.score = 0;
 
-        // Lives
-        this.lives = 3;
 
         // Variable to Check If I'm in the Process of creating an Obstacle
         this.isPushingObstacle = false;
 
-        // Variable that checks if the Game is over
+        // Variable that checks if the Game is lost
         this.gameIsOver = false;
 
+        // Variable that checks if the Game is won
         this.gameIsWon = false;
     }
 
@@ -47,8 +43,10 @@ class Game {
         this.gameScreen.style.height = `${this.height}px`;
         this.gameScreen.style.width = `${this.width}px`;
 
+        /*
         this.skyScreen.style.height = `${200}px`;
         this.skyScreen.style.width = `${1200}px`;
+        */
 
 
         // - Hides the start screen.
@@ -64,18 +62,15 @@ class Game {
         // - Starts timer
         this.startTimer();
 
-        this.soundTrack = document.getElementById("soundtrackgame");
-        this.soundTrack1 = document.getElementById("soundtrackwin");
-        this.soundTrack2 = document.getElementById("soundtracklose");
-        //this.soundTrack5 = document.getElementById("soundtrackscream");
+        this.soundTrack = document.getElementById("soundtrackGame");
+        this.soundTrack1 = document.getElementById("soundtrackWin");
+        this.soundTrack2 = document.getElementById("soundtrackLose");
+
         this.soundTrack.play();
         this.soundTrack.volume = 0.5;
     }
 
-    borderUp() {
-
-    }
-
+    
     gameLoop() {
 
         if (this.gameIsOver) {
@@ -89,13 +84,10 @@ class Game {
     }
 
     update() {
-        /* Score, Lives, Scoreboard */
+        /* Score */
         let score = document.getElementById("score");
-        let lives = document.getElementById("lives");
-
-
-
-        /* Every frame of the game, I want to check if the car is moving */
+        
+        /* Every frame of the game, I want to check if the ship is moving */
         this.player.move();
 
         // Iterate over the obstacles array and make them move
@@ -105,53 +97,20 @@ class Game {
 
             if (this.player.didCollide(obstacle)) {
 
-                //this.soundTrack5.play();
-                //this.soundTrack5.volume = 0.1;
-
                 setTimeout(() => {
-                    //obstacle.collision();
+                    
                     obstacle.element.remove();
 
                 }, 150);
 
                 this.obstacles.splice(i, 1);
 
+                this.kickback(obstacle);
 
-                //obstacle.right -= 10;
-
-                if (obstacle.height === 40) {
-
-                    this.player.directionY += 5;
-                    this.player.directionX -= 10;
-                }
-
-                if (obstacle.height === 60) {
-
-                    this.player.directionY -= 5;
-                    this.player.directionX -= 10;
-                }
-
-                if (obstacle.height === 50) {
-
-                    this.player.directionX -= 8;
-
-                }
-
-                if (obstacle.height === 85) {
-
-                    this.player.directionX -= 12;
-                }
-
-                if (obstacle.height === 180) {
-
-                    this.player.directionX -= 17;
-                }
-                //this.lives--          
             }
 
             if (obstacle.right > this.width) {
-                //this.score++;
-
+                
                 // Remove the Obstacle HTML Element from the HTML.
                 obstacle.element.remove();
 
@@ -160,7 +119,7 @@ class Game {
             }
 
             else if (obstacle.velocity < 0 && (obstacle.right + obstacle.width) <= 0) {
-                //this.score++;
+                
 
                 // Remove the Obstacle HTML Element from the HTML.
                 obstacle.element.remove();
@@ -171,74 +130,102 @@ class Game {
 
         }
 
-        if (this.lives === 0) {
-            this.endGame();
-        }
+    
 
-        else if (this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
+        if (this.player.left + this.player.width >= this.gameScreen.offsetWidth) {
             this.winGame();
-
         }
 
-        // If there are no obstacles, push a new one in after 1 second and a half
-        if (!this.obstacles.length + 100 && !this.isPushingObstacle) {
+        // Pushing new objects in
+        if (!this.obstacles.length + 1 && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
 
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, -20, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
                 this.isPushingObstacle = false;
 
-            }, 700);
+            }, 500);
         }
 
-        if (!this.obstacles.length + 100 && !this.isPushingIce) {
+        if (!this.obstacles.length + 1 && !this.isPushingIce) {
             this.isPushingIce = true;
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, -10, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
                 this.isPushingIce = false;
 
             }, 900);
         }
 
-        if (!this.obstacles.length + 100 && !this.isPushingBigIce) {
+        if (!this.obstacles.length + 1 && !this.isPushingBigIce) {
             this.isPushingBigIce = true;
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, -20, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
                 this.isPushingBigIce = false;
 
             }, 2500);
         }
 
-        if (!this.obstacles.length + 100 && !this.isPushingLongIce) {
+        if (!this.obstacles.length + 1 && !this.isPushingLongIce) {
             this.isPushingLongIce = true;
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 40, -2, -40, 0, 1200, "./images/icebergdown.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 120, 40, -3, 0, 1200, "./images/icebergdown.png"));
                 this.isPushingLongIce = false;
 
             }, 500);
         }
 
-        if (!this.obstacles.length + 100 && !this.isPushingDownIce) {
+        if (!this.obstacles.length + 1 && !this.isPushingDownIce) {
             this.isPushingDownIce = true;
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 100, 60, -2, -20, 540, 1200, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 120, 60, -3, 540, 1200, "./images/iceberg.png"));
                 this.isPushingDownIce = false;
 
             }, 500);
         }
 
         score.innerHTML = this.score;
-        lives.innerHTML = this.lives;
+        
+    }
+
+    kickback(obstacle) {
+
+        if (obstacle.height === 40) {
+
+            this.player.directionY += 5;
+            this.player.directionX -= 10;
+        }
+
+        if (obstacle.height === 60) {
+
+            this.player.directionY -= 5;
+            this.player.directionX -= 10;
+        }
+
+        if (obstacle.height === 50) {
+
+            this.player.directionX -= 8;
+
+        }
+
+        if (obstacle.height === 85) {
+
+            this.player.directionX -= 12;
+        }
+
+        if (obstacle.height === 180) {
+
+            this.player.directionX -= 17;
+        }
     }
 
     startTimer() {
@@ -262,7 +249,6 @@ class Game {
             }
             time--;
         }, 1000);
-
     }
 
     endGame() {
@@ -296,7 +282,7 @@ class Game {
     }
 
     winGame() {
-        // Change the gameIsOver status. if it's true, remember that this is going to break the animaton loop.
+        // Change the gameIsWon status. if it's true, remember that this is going to break the animaton loop.
         this.gameIsWon = true;
 
         // Remove Player
@@ -314,16 +300,12 @@ class Game {
         // Hide the current Game Screen
         this.gameScreen.style.display = "none";
 
-
         this.soundTrack.pause()
 
         // In order to display the Game End Screen
         this.gameWinScreen.style.display = "block";
 
-
         this.soundTrack1.play()
-
-
     }
 }
 
