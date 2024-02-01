@@ -10,7 +10,7 @@ class Game {
         this.gameWinScreen = document.getElementById("win-game");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
-        this.player = new Player(this.gameScreen, 125, 75, 75, 50, "./images/titanic.png")
+        this.player = new Player(this.gameScreen, 125, 75, 75, 50, "./docs/images/titanic.png")
 
         //this.obstacle = new Obstacle(this.gameScreen, width, height, velocity, kickback, position, image)
 
@@ -143,7 +143,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 50, 50, 10, (Math.floor(Math.random() * 550 + 0)), -210, "./docs/images/iceberg.png"));
                 this.isPushingObstacle = false;
 
             }, 500);
@@ -154,7 +154,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 85, 85, 8, (Math.floor(Math.random() * 550 + 0)), -210, "./docs/images/iceberg.png"));
                 this.isPushingIce = false;
 
             }, 900);
@@ -165,7 +165,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, (Math.floor(Math.random() * 550 + 0)), -210, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, (Math.floor(Math.random() * 550 + 0)), -210, "./docs/images/iceberg.png"));
                 this.isPushingBigIce = false;
 
             }, 2500);
@@ -176,7 +176,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 120, 40, -3, 0, 1200, "./images/icebergdown.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 120, 40, -3, 0, 1200, "./docs/images/icebergdown.png"));
                 this.isPushingLongIce = false;
 
             }, 500);
@@ -187,7 +187,7 @@ class Game {
 
             setTimeout(() => {
 
-                this.obstacles.push(new Obstacle(this.gameScreen, 120, 60, -3, 540, 1200, "./images/iceberg.png"));
+                this.obstacles.push(new Obstacle(this.gameScreen, 120, 60, -3, 540, 1200, "./docs/images/iceberg.png"));
                 this.isPushingDownIce = false;
 
             }, 500);
