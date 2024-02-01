@@ -3,6 +3,11 @@ body {
   text-align: center;
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 #game-intro {
   
   background-image: url(../images/intropic.png);
@@ -28,7 +33,6 @@ body {
   display: none;
   align-content: center;
   margin-top: 50px;
-  
   overflow: hidden;
   position: relative;
   background-image: url(../images/sea.png);
@@ -68,15 +72,19 @@ body {
   width: 150px;
 }
 
-body button {
+body #start-button {
+  font-family: "ArcadeClassic";
   font-size: 30px;
-  background-color: #001087;
+  background-color: #1f2ea5;
   color: #fff;
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+  margin-left: 300px;
+  position: absolute;
+  left: 0px;
 }
 
 #time-remaining {
