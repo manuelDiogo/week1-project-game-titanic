@@ -4,7 +4,13 @@ body {
 }
 
 #game-intro {
-  padding: 20px 0px;
+  
+  background-image: url(../images/intropic.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 750px;
+  
 }
 
 #game-container {
@@ -73,8 +79,13 @@ body button {
 }
 
 #time-remaining {
-  justify-content: center;
-  color: orange;
-  margin-right: 50px;
+  font-family: "ArcadeClassic";
+  display: none;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  top: 8px;
+  left: 180px;
+  position: absolute;
+  letter-spacing: 1px;
 }
 

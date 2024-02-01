@@ -6,8 +6,8 @@ class Game {
         this.startScreen = document.getElementById("game-intro");
         this.gameScreen = document.getElementById("game-screen");
         this.gameEndScreen = document.getElementById("game-end");
-        this.skyScreen = document.getElementById("sky-img");
         this.gameWinScreen = document.getElementById("win-game");
+        this.timer = document.getElementById("time-remaining");
 
         // I am going to create a player in the future. For now, I'll leave it to null.
         this.player = new Player(this.gameScreen, 125, 75, 75, 50, "./docs/images/titanic.png")
@@ -23,8 +23,7 @@ class Game {
         this.obstacles = [];
 
         
-        // Score
-        this.score = 0;
+        
 
 
         // Variable to Check If I'm in the Process of creating an Obstacle
@@ -54,6 +53,9 @@ class Game {
 
         // - Shows the game screen.
         this.gameScreen.style.display = "block";
+
+        //Shows timer
+        this.timer.style.display = "block";
 
 
         // - Starts the game loop 
@@ -193,8 +195,6 @@ class Game {
             }, 500);
         }
 
-        score.innerHTML = this.score;
-        
     }
 
     kickback(obstacle) {
@@ -229,7 +229,7 @@ class Game {
     }
 
     startTimer() {
-        let time = 90;
+        let time = 3;
 
         let timerElement = document.getElementById("time-remaining");
 
@@ -257,6 +257,9 @@ class Game {
 
         // Remove Player
         this.player.element.remove();
+
+        //Hides timer
+        this.timer.style.display = "none";
 
         // Remove all Obstacles
         this.obstacles.forEach((obstacle, index) => {
@@ -287,6 +290,9 @@ class Game {
 
         // Remove Player
         this.player.element.remove();
+
+        //Hides timer
+        this.timer.style.display = "none";
 
         // Remove all Obstacles
         this.obstacles.forEach((obstacle, index) => {
