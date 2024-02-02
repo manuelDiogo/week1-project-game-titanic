@@ -170,7 +170,7 @@ class Game {
                 this.obstacles.push(new Obstacle(this.gameScreen, 180, 180, 2, (Math.floor(Math.random() * 550 + 0)), -210, "./docs/images/iceberg.png"));
                 this.isPushingBigIce = false;
 
-            }, 3500);
+            }, 5000);
         }
 
         if (!this.obstacles.length + 1 && !this.isPushingLongIce) {
